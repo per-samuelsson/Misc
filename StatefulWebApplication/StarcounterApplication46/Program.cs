@@ -49,6 +49,12 @@ namespace StarcounterApplication46
                 app.Focused.Data = Db.SQL<Mail>("SELECT m FROM Mail m WHERE ObjectID=?", id).First;
                 return app;
             });
+
+            // Finally, if Self.GET is still needed (probably), the proposed API
+            // is `app.GetPartial`, no longer forcing /partial in the URI and removing
+            // the need for an additionl "Self" class
+
+            var partial = app.GetPartial("/settings");
         }
     }
 }
